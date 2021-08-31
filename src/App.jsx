@@ -31,7 +31,7 @@ export const App = () => {
             <CategoriesButton
               key={item}
               name={item}
-              getCategoryJoke={async() => {
+              getJoke={async() => {
                 const randomPhrase = await getJoke(`random?category=${item}`);
 
                 setPhrase(randomPhrase.value);
@@ -40,7 +40,7 @@ export const App = () => {
           ))}
           <CategoriesButton
             name="random"
-            getRandomJoke={async() => {
+            getJoke={async() => {
               const randomPhrase = await getJoke('random');
 
               setPhrase(randomPhrase.value);
