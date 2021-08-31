@@ -3,3 +3,24 @@ main {
   margin-right: 160px;
   margin-left: 160px;
 }
+.title-container {
+  display: flex;
+  justify-content: center;
+}
+.title {
+  margin: 60px 0;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 50px;
+  line-height: 59px;
+  color: #1C1C39;
+}
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-flow: row wrap;
+  gap: 20px;
+}

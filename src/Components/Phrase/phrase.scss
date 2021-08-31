@@ -1,8 +1,22 @@
-.phrase {
-  color: white;
+.chuck-img-container {
+  position: relative;
+}
+.chuck-img {
+  position: absolute;
+  bottom: 100px;
+  right: 30px;
+}
+.phrase-container {
+  position: relative;
+  background-color: #422ed4;
+  height: 162px;
+  border-radius: 25px;
+  margin-top: 165px;
+  padding: 24px;
+  box-shadow: 0 100px 80px rgba(80, 76, 103, 0.07), 0 0 10.0172px rgba(80, 76, 103, 0.035);
+  z-index: 1;
 }
 
-.phrase-container {
-  background-color: #422ed4;
-
+.phrase {
+  color: white;
 }

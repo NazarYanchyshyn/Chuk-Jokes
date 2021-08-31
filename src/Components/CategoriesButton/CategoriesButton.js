@@ -1,19 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './categoriesButton.scss';
 
 export const CategoriesButton = (props) => {
-  // eslint-disable-next-line react/prop-types
-  const { name, f } = props;
+  const { name, getRandomJoke } = props;
 
   return (
-    <div>
-      <button
-        className="button is-link is-outlined categories-button"
-        type="button"
-        onClick={f}
-      >
-        {name}
-      </button>
-    </div>
+    <button
+      className="phrase-button"
+      type="button"
+      onClick={getRandomJoke}
+    >
+      {name}
+    </button>
   );
+};
+
+CategoriesButton.propTypes = {
+  name: PropTypes.string.isRequired,
+  getRandomJoke: PropTypes.func.isRequired,
 };

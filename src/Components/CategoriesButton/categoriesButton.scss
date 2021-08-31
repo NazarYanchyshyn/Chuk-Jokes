@@ -1,4 +1,17 @@
-.categories-button {
+.phrase-button {
   width: 170px;
   height: 57px;
+  border-radius: 20px;
+  background-color: white;
+  font-size: 16px;
+  line-height: 19px;
+  color: #1C1C39;
+  border: 0;
+  grid-area: bt;
+
+  &:hover {
+    background: #422ED4;
+    color: #FFFFFF;
+  }
 }
+
