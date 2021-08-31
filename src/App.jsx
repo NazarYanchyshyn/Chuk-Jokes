@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Loader from 'react-loader-spinner';
 import './App.scss';
 import { getJoke, getCategories } from './chukApi';
 import { CategoriesButton } from './Components/CategoriesButton';
@@ -13,11 +14,25 @@ export const App = () => {
   useEffect(async() => {
     const randomPhrase = await getJoke('random');
     const allCategories = await getCategories();
+    const obj = allCategories.map(item => ({
+      name: item,
+      route: `random?category=${item}`,
+    }));
 
-    setCategories(allCategories);
+    obj.push({
+      name: 'random',
+      route: 'random',
+    });
+    setCategories(obj);
     setPhrase(randomPhrase.value);
     setIcon(randomPhrase.icon_url);
   }, []);
+
+  const getPhrase = async(item) => {
+    const randomPhrase = await getJoke(item);
+
+    setPhrase(randomPhrase.value);
+  };
 
   return (
     <>
@@ -27,25 +42,23 @@ export const App = () => {
           <h1 className="title">Categories</h1>
         </div>
         <div className="buttons-container">
-          {categories.map(item => (
-            <CategoriesButton
-              key={item}
-              name={item}
-              getJoke={async() => {
-                const randomPhrase = await getJoke(`random?category=${item}`);
-
-                setPhrase(randomPhrase.value);
-              }}
-            />
-          ))}
-          <CategoriesButton
-            name="random"
-            getJoke={async() => {
-              const randomPhrase = await getJoke('random');
-
-              setPhrase(randomPhrase.value);
-            }}
-          />
+          {categories.length > 0
+            ? (
+              categories.map(item => (
+                <CategoriesButton
+                  key={item.name}
+                  name={item.name}
+                  getJoke={() => getPhrase(item.route)}
+                />
+              ))
+            ) : (
+              <Loader
+                type="Puff"
+                color="#00BFFF"
+                height={100}
+                width={100}
+              />
+            ) }
         </div>
         <Phrase phrase={phrase} />
       </main>
